@@ -1,8 +1,14 @@
 const app = require('express')();
 const yahooStocks = require('yahoo-stocks');
 
+const symbols = ['AAPL', 'GOOG', 'COF', 'AMZN', 'MSFT', 'C', 'Z'];
+
 app.get('/lookup', (req, res, next) => {
-  yahooStocks.lookup('COF')
+  let lookups = [];
+  symbols.forEach(symbol => {
+    lookups.push(yahooStocks.lookup(symbol))
+  })
+  Promise.all(lookups)
   .then(data => {
     console.log(data);
     res.send(data)
@@ -11,7 +17,11 @@ app.get('/lookup', (req, res, next) => {
 })
 
 app.get('/historical', (req, res, next) => {
-  yahooStocks.history('COF')
+  let histories = [];
+  symbols.forEach(symbol => {
+    histories.push(yahooStocks.history(symbol))
+  })
+  Promise.all(histories)
   .then(data => {
     console.log(data);
     res.json(data)

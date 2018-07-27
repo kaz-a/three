@@ -2,13 +2,8 @@ import * as THREE from 'three';
 import { lookupData, historicalData } from './datafeed';
 
 const lookup = lookupData.then(data => {
-  console.log('lookup:', data)
+  console.log('lookup:', data.data)
 })
-
-const historical = historicalData.then(data => {
-  console.log('historical:', data)
-})
-
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
