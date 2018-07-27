@@ -1,5 +1,6 @@
 body{
   margin: 0;
+  background: linear-gradient(30deg,  #11e8bb 0%,#8200c9 100%);
 }
 canvas {
   width: 100%;
