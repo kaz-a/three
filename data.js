@@ -1,13 +1,22 @@
+const app = require('express')();
 const yahooStocks = require('yahoo-stocks');
 
-// const lookup = yahooStocks.lookup('COF').then(response => {
-//     console.log(response);
-// });
+app.get('/lookup', (req, res, next) => {
+  yahooStocks.lookup('COF')
+  .then(data => {
+    console.log(data);
+    res.send(data)
+  })
+  .catch(next);
+})
 
-const historical = yahooStocks.history('COF').then(res => {
-    console.log(res);
-});
+app.get('/historical', (req, res, next) => {
+  yahooStocks.history('COF')
+  .then(data => {
+    console.log(data);
+    res.json(data)
+  })
+  .catch(next);
+})
 
-module.exports = {
-  historical
-}
+module.exports = app;
