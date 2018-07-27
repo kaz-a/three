@@ -1,7 +1,9 @@
 import axios from 'axios';
 
 export const lookupData = axios.get('/lookup')
-.then(data => {
-  console.log('data from frontend!', data)
-  return data.data
-})
+.then(data => data.data)
+
+export const historicalData = axios.get('/historical')
+.then(data => data.data)
+
+
