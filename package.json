@@ -19,7 +19,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack": "./node_modules/webpack/bin/webpack.js",
-    "build": "npm run webpack -- -w & nodemon server.js"
+    "start": "npm run webpack -- -w & nodemon server.js"
   },
   "keywords": [],
   "author": "",
