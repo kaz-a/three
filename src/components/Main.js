@@ -6,25 +6,35 @@ class Main extends Component {
   constructor(){
     super();
     this.state = {
-      data: []
+      lookupData: [],
+      // historicalData: []
     }
   }
 
-  fetchData(){
+  fetchLookupData(){
     axios.get('/lookup')
     .then(data => {
       // console.log(data.data)
-      this.setState({data: data.data})
+      this.setState({lookupData: data.data})
     })
-    // axios.get('/historical')
-    // .then(data => data)
   }
 
+  // fetchHistoricalData(){
+  //   axios.get('/historical')
+  //   .then(data => {
+  //     this.setState({historicalData: data.data})
+  //   })
+  // }
+
   componentDidMount(){
-    this.fetchData();
+    this.fetchLookupData();
+    // this.fetchHistoricalData();
   }
 
   three(){
+    const data = this.state;
+    console.log('data', data)
+
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer({ alpha: true });
@@ -52,9 +62,8 @@ class Main extends Component {
   }
 
   render (){
-    console.log('this.state:', this.state)
     return (
-      <div>{ this.three() }</div>
+      <div>{ this.state.lookupData.length >= 1 ? this.three() : '' }</div>
     )
   }
 }
