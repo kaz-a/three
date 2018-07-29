@@ -8,6 +8,7 @@ const express = require('express'),
 app.use('/vendor', express.static(path.join(__dirname, 'node_modules')));
 app.use('/src', express.static(path.join(__dirname, 'src')));
 app.use('/dist', express.static(path.join(__dirname, 'dist')));
+app.use('/public', express.static(path.join(__dirname, 'public')));
 app.use('/', data)
 
 app.get('/', (req, res, next) => {
