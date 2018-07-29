@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import * as THREE from 'three';
 
-class Scene extends Component {
+class SomeScene extends Component {
   constructor(){
     super();
-    this.state = {
-      
-    }
+    
   }
 
   three(){
@@ -40,14 +38,14 @@ class Scene extends Component {
     
   }
 
-  render (){
+  render(){
     return (
-      <div>{ this.props.data.length >= 1 ? this.three() : '' }</div>
-    )
+      <div>{ this.props.data.length >=1 ? this.three() : null }</div>
+    );
   }
 }
 
-export default Scene;
+export default SomeScene;
 
 
 
