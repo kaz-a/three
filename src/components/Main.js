@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import SomeScene from './Scene';
+import Scene from './Scene';
 
 class Main extends Component {
   constructor(){
@@ -32,7 +32,7 @@ class Main extends Component {
 
   render (){
     return (
-      <SomeScene data={ this.state.data } />
+      <Scene data={ this.state.data } />
     )
   }
 }

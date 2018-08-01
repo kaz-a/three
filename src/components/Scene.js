@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import * as THREE from 'three';
 
-class SomeScene extends Component {
+class Scene extends Component {
   constructor(){
     super();
     
@@ -166,7 +166,7 @@ class SomeScene extends Component {
   }
 }
 
-export default SomeScene;
+export default Scene;
 
 
 
