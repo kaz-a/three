@@ -76,12 +76,20 @@ class SomeScene extends Component {
     const geometryCOF = new THREE.SphereGeometry(data[2].currentPrice, 1, 1);
     const materialCOF = new THREE.MeshBasicMaterial({ color: 0xffff00, wireframe: true }) 
     const meshCOF = new THREE.Mesh(geometryCOF, materialCOF);
+    meshCOF.position.x = data[2].currentPrice;
     scene.add(meshCOF)
 
     const geometryAAPL = new THREE.SphereGeometry(data[0].currentPrice, 1, 1);
     const materialAAPL = new THREE.MeshBasicMaterial({ color: 0xffff00, wireframe: true }) 
     const meshAAPL = new THREE.Mesh(geometryAAPL, materialAAPL);
+    meshAAPL.position.x = data[0].currentPrice;
     scene.add(meshAAPL)
+
+    const geometryGOOG = new THREE.SphereGeometry(data[1].currentPrice, 1, 1);
+    const materialGOOG = new THREE.MeshBasicMaterial({ color: 0xffff00, wireframe: true }) 
+    const meshGOOG = new THREE.Mesh(geometryGOOG, materialGOOG);
+    meshGOOG.position.x = data[1].currentPrice;
+    scene.add(meshGOOG)
 
     // camera.position.z = 10;
 
@@ -90,6 +98,12 @@ class SomeScene extends Component {
 
       meshCOF.rotation.x += 0.01;
       meshCOF.rotation.y += 0.01;
+
+      meshAAPL.rotation.x += 0.02;
+      meshAAPL.rotation.y += 0.02;
+
+      meshGOOG.rotation.x += 0.02;
+      meshGOOG.rotation.y += 0.02;
 
       renderer.render(scene, camera);
     }
