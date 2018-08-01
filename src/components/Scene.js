@@ -33,7 +33,8 @@ class Scene extends Component {
 
     // Create spheres from data
     for(let i=0; i<data.length; i++){
-      const geometry = new THREE.SphereGeometry(data[i].currentPrice, 10, 10);
+      const largeSphere = data[i].currentPrice >= 1000;
+      const geometry = new THREE.SphereGeometry(data[i].currentPrice, largeSphere ? 30 : 10, largeSphere ? 30 : 10);
       const material = new THREE.MeshPhongMaterial({ color: 0xffff00, wireframe: true }) 
       const mesh = new THREE.Mesh(geometry, material);
       
@@ -53,8 +54,8 @@ class Scene extends Component {
 
       const animate = () => {
         requestAnimationFrame(animate);
-        mesh.rotation.x += 0.01;
-        mesh.rotation.y += 0.01;
+        mesh.rotation.x += Math.random()/100;
+        mesh.rotation.y += Math.random()/100;
         renderer.render(scene, camera);
       }
       
