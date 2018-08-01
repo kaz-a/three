@@ -31,15 +31,13 @@ class Scene extends Component {
     const lightAmbient = new THREE.AmbientLight(0x404040);
     scene.add(light, light_two, lightAmbient);
 
-    
-
+    // Create spheres from data
     for(let i=0; i<data.length; i++){
       const geometry = new THREE.SphereGeometry(data[i].currentPrice, 10, 10);
       const material = new THREE.MeshPhongMaterial({ color: 0xffff00, wireframe: true }) 
       const mesh = new THREE.Mesh(geometry, material);
       
-      mesh.position.z = 0;
-     
+      mesh.position.z = 0;     
       if(data[i].symbol === 'GOOG'){
         mesh.position.x = data[i].currentPrice - 3000;
         mesh.position.y = data[i].currentPrice - 2000;
@@ -62,7 +60,6 @@ class Scene extends Component {
       
       animate()
     }
-
   }
 
   render(){
