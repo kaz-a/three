@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import * as THREE from 'three';
+import { dirname } from 'path';
 
 class Scene extends Component {
   constructor(){
@@ -57,22 +58,13 @@ class Scene extends Component {
         mesh.rotation.x += Math.random()/100;
         mesh.rotation.y += Math.random()/100;
 
-        if(mesh.position.x > window.innerWidth) {
-          mesh.position.x -= Math.random()
-        } else if(mesh.position.x < 0) {
-          mesh.position.x += Math.random()
-        } else {
-          mesh.position.x += Math.random()
-        }
-
         if(mesh.position.y > window.innerHeight) {
           mesh.position.y -= Math.random()
         } else if(mesh.position.y < 0) {
           mesh.position.y += Math.random()
-        } else {
-          mesh.position.y += Math.random()
-        }
-        
+        } 
+        mesh.position.y += Math.random()
+
         renderer.render(scene, camera);
       }
       
