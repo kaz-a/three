@@ -58,19 +58,19 @@ class Scene extends Component {
         mesh.rotation.y += Math.random()/100;
 
         if(mesh.position.x > window.innerWidth) {
-          mesh.position.x -= Math.random()/100
+          mesh.position.x -= Math.random()
         } else if(mesh.position.x < 0) {
-          mesh.position.x += Math.random()/100
+          mesh.position.x += Math.random()
         } else {
-          mesh.position.x += Math.random()/100
+          mesh.position.x += Math.random()
         }
 
         if(mesh.position.y > window.innerHeight) {
-          mesh.position.y -= Math.random()/100
+          mesh.position.y -= Math.random()
         } else if(mesh.position.y < 0) {
-          mesh.position.y += Math.random()/100
+          mesh.position.y += Math.random()
         } else {
-          mesh.position.y += Math.random()/100
+          mesh.position.y += Math.random()
         }
         
         renderer.render(scene, camera);
