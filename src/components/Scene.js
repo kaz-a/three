@@ -21,7 +21,7 @@ class SomeScene extends Component {
     const renderer = new THREE.WebGLRenderer({ alpha: true });
     renderer.setClearColor(0x000000, 0.0);
     renderer.setSize(window.innerWidth, window.innerHeight);
-    document.getElementById('root').appendChild(renderer.domElement);
+    document.getElementById('space').appendChild(renderer.domElement);
 
     // Lighting
     const light = new THREE.PointLight(0xffffff, 1, 4000);
@@ -31,70 +31,70 @@ class SomeScene extends Component {
     const lightAmbient = new THREE.AmbientLight(0x404040);
     scene.add(light, light_two, lightAmbient);
 
-    // Objects
-    const createSpheres = () => {
-      //create empty 3d object — group for future spheres
-      const spheres = new THREE.Object3D();
+    // // Objects
+    // const createSpheres = () => {
+    //   //create empty 3d object — group for future spheres
+    //   const spheres = new THREE.Object3D();
       
-      // create spheres based on data
-      for (let i = 0; i < data.length; i++) {
-        let sphere = new THREE.SphereGeometry(data[i].currentPrice/100, 8, 8);
-        let material = new THREE.MeshBasicMaterial({
-            color: 0xffff00,
-            wireframe: true
-        })
+    //   // create spheres based on data
+    //   for (let i = 0; i < data.length; i++) {
+    //     let sphere = new THREE.SphereGeometry(data[i].currentPrice/100, 8, 8);
+    //     let material = new THREE.MeshBasicMaterial({
+    //         color: 0xffff00,
+    //         wireframe: true
+    //     })
       
-          //creating the mesh and add primitive and material
-          let particle = new THREE.Mesh(sphere, material);
+    //       //creating the mesh and add primitive and material
+    //       let particle = new THREE.Mesh(sphere, material);
           
-          //randomly set position and scale
-          const distance = 400;
-          particle.position.x = Math.random() * distance * 10;
-          particle.position.y = Math.random() * -distance * 6;
-          particle.position.z = Math.random() * distance * 4;
-          particle.rotation.y = Math.random() * 2 * Math.PI;
-          particle.scale.x = particle.scale.y = particle.scale.z = Math.random() * 12 + 5;
+    //       //randomly set position and scale
+    //       const distance = 400;
+    //       particle.position.x = Math.random() * distance * 10;
+    //       particle.position.y = Math.random() * -distance * 6;
+    //       particle.position.z = Math.random() * distance * 4;
+    //       particle.rotation.y = Math.random() * 2 * Math.PI;
+    //       particle.scale.x = particle.scale.y = particle.scale.z = data[i].currentPrice/100 + 5;
 
-          //add particle to the spheres group
-          spheres.add(particle);
-        }
+    //       //add particle to the spheres group
+    //       spheres.add(particle);
+    //     }
       
-        //correct spheres position relative to the camera
-        spheres.position.y = 500;
-        spheres.position.x = -2000;
-        spheres.position.z = -100;
-        spheres.rotation.y = Math.PI * 600;
+    //     //correct spheres position relative to the camera
+    //     spheres.position.y = 500;
+    //     spheres.position.x = -2000;
+    //     spheres.position.z = -100;
+    //     spheres.rotation.y = Math.PI * 600;
 
-        //add spheres to the scene
-        scene.add(spheres);
-    }
-
-    createSpheres();
-
-    renderer.render(scene, camera)
-
-    // const geometryCOF = new THREE.SphereGeometry(data[2].currentPrice/100, 1, 1);
-    // const materialCOF = new THREE.MeshBasicMaterial({ color: 0xffff00, wireframe: true }) 
-    // const meshCOF = new THREE.Mesh(geometryCOF, materialCOF);
-    // scene.add(meshCOF)
-
-    // const geometryAAPL = new THREE.SphereGeometry(data[0].currentPrice/100, 1,1);
-    // const materialAAPL = new THREE.MeshBasicMaterial({ color: 0xffff00, wireframe: true }) 
-    // const meshAAPL = new THREE.Mesh(geometryAAPL, materialAAPL);
-    // scene.add(meshAAPL)
-
-    // // camera.position.z = 10;
-
-    // const animate = () => {
-    //   requestAnimationFrame(animate);
-
-    //   meshCOF.rotation.x += 0.01;
-    //   meshCOF.rotation.y += 0.01;
-
-    //   renderer.render(scene, camera);
+    //     //add spheres to the scene
+    //     scene.add(spheres);
     // }
 
-    // animate();
+    // createSpheres();
+
+    // renderer.render(scene, camera)
+
+    const geometryCOF = new THREE.SphereGeometry(data[2].currentPrice, 1, 1);
+    const materialCOF = new THREE.MeshBasicMaterial({ color: 0xffff00, wireframe: true }) 
+    const meshCOF = new THREE.Mesh(geometryCOF, materialCOF);
+    scene.add(meshCOF)
+
+    const geometryAAPL = new THREE.SphereGeometry(data[0].currentPrice, 1, 1);
+    const materialAAPL = new THREE.MeshBasicMaterial({ color: 0xffff00, wireframe: true }) 
+    const meshAAPL = new THREE.Mesh(geometryAAPL, materialAAPL);
+    scene.add(meshAAPL)
+
+    // camera.position.z = 10;
+
+    const animate = () => {
+      requestAnimationFrame(animate);
+
+      meshCOF.rotation.x += 0.01;
+      meshCOF.rotation.y += 0.01;
+
+      renderer.render(scene, camera);
+    }
+
+    animate();
     
   }
 
@@ -102,7 +102,8 @@ class SomeScene extends Component {
 
   render(){
     return (
-      <div>{ this.props.data.length ? this.three() : null }
+      <div id='space'>
+      { this.props.data.length ? this.three() : null }
       
       </div>
     );
