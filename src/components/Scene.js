@@ -114,7 +114,7 @@ class Scene extends Component {
     meshZ.position.y = data[6].currentPrice
     scene.add(meshZ)
 
-    const geometryAMZN = new THREE.SphereGeometry(data[3].currentPrice, 18, 18);
+    const geometryAMZN = new THREE.SphereGeometry(data[3].currentPrice, 28, 28);
     const materialAMZN = new THREE.MeshPhongMaterial({ color: 0xffff00, wireframe: true }) 
     const meshAMZN = new THREE.Mesh(geometryAMZN, materialAMZN);
     meshAMZN.position.x = data[3].currentPrice -3000;
