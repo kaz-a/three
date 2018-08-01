@@ -73,6 +73,7 @@ class SomeScene extends Component {
 
     // renderer.render(scene, camera)
 
+    
     const geometryCOF = new THREE.SphereGeometry(data[2].currentPrice, 8, 8);
     const materialCOF = new THREE.MeshPhongMaterial({ color: 0xffff00, wireframe: true }) 
     const meshCOF = new THREE.Mesh(geometryCOF, materialCOF);
@@ -113,6 +114,13 @@ class SomeScene extends Component {
     meshZ.position.y = data[6].currentPrice
     scene.add(meshZ)
 
+    const geometryAMZN = new THREE.SphereGeometry(data[3].currentPrice, 18, 18);
+    const materialAMZN = new THREE.MeshPhongMaterial({ color: 0xffff00, wireframe: true }) 
+    const meshAMZN = new THREE.Mesh(geometryAMZN, materialAMZN);
+    meshAMZN.position.x = data[3].currentPrice -3000;
+    meshAMZN.position.y = data[3].currentPrice - 4200
+    scene.add(meshAMZN)
+
     // camera.position.z = 10;
 
     const animate = () => {
@@ -135,6 +143,9 @@ class SomeScene extends Component {
 
       meshZ.rotation.x += 0.02;
       meshZ.rotation.y += 0.02;
+
+      meshAMZN.rotation.x += 0.005;
+      meshAMZN.rotation.y += 0.005;
 
       renderer.render(scene, camera);
     }
