@@ -32,12 +32,6 @@ class Scene extends Component {
     const lightAmbient = new THREE.AmbientLight(0x404040);
     scene.add(light, light_two, lightAmbient);
 
-    // // Controls
-    // const controls = new THREE.OrbitControls(camera, renderer.domElement);
-    // controls.enableDamping = true;
-    // controls.dampingFactor = 0.25;
-    // controls.enableZoom = false;
-  
     // Create spheres from data
     for(let i=0; i<data.length; i++){
       const largeSphere = data[i].currentPrice >= 1000;
@@ -48,24 +42,19 @@ class Scene extends Component {
       mesh.position.z = 0;     
       mesh.position.x = Math.random() * window.innerWidth * 2 - window.innerWidth;
       mesh.position.y = Math.random() * window.innerWidth * 2 - window.innerWidth;
-      mesh.direction = {
-        x: Math.random(),
-        y: Math.random()
-      }
+      mesh.direction = { x: Math.random(), y: Math.random() }
       scene.add(mesh)
 
-      console.log(mesh)
+      // console.log(mesh)
 
       const animate = () => {
         requestAnimationFrame(animate);
-        // controls.update();
 
         mesh.rotation.x += Math.random()/100;
         mesh.rotation.y += Math.random()/100;
 
         mesh.position.x += mesh.direction.x;
         mesh.position.y += mesh.direction.y;
-        
         if(mesh.position.x < -window.innerWidth || mesh.position.x > window.innerWidth) {
           mesh.direction.x = -mesh.direction.x
         } 
