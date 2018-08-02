@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
 import * as THREE from 'three';
-import { dirname } from 'path';
 
 class Scene extends Component {
-  constructor(){
-    super();
-    
-  }
-
   three(){
     const {data} = this.props;
     console.log('data:', data)
@@ -72,8 +66,7 @@ class Scene extends Component {
   render(){
     return (
       <div id='space'>
-      { this.props.data.length ? this.three() : null }
-      
+        { this.props.data.length ? this.three() : null }
       </div>
     );
   }
