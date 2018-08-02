@@ -1,7 +1,7 @@
 const app = require('express')();
 const yahooStocks = require('yahoo-stocks');
 
-const symbols = ['AAPL', 'GOOG', 'COF', 'AMZN', 'MSFT', 'C', 'Z'];
+const symbols = ['AAPL', 'COF', 'MSFT', 'C', 'Z'];
 
 app.get('/lookup', (req, res, next) => {
   let lookups = [];

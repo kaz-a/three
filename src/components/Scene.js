@@ -32,38 +32,46 @@ class Scene extends Component {
     const lightAmbient = new THREE.AmbientLight(0x404040);
     scene.add(light, light_two, lightAmbient);
 
+    // // Controls
+    // const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    // controls.enableDamping = true;
+    // controls.dampingFactor = 0.25;
+    // controls.enableZoom = false;
+  
     // Create spheres from data
     for(let i=0; i<data.length; i++){
       const largeSphere = data[i].currentPrice >= 1000;
       const geometry = new THREE.SphereGeometry(data[i].currentPrice, largeSphere ? 30 : 10, largeSphere ? 30 : 10);
       const material = new THREE.MeshPhongMaterial({ color: 0xffff00, wireframe: true }) 
       const mesh = new THREE.Mesh(geometry, material);
-      
+
       mesh.position.z = 0;     
-      if(data[i].symbol === 'GOOG'){
-        mesh.position.x = data[i].currentPrice - 3000;
-        mesh.position.y = data[i].currentPrice - 2000;
-      } else if(data[i].symbol === 'AMZN'){
-        mesh.position.x = data[i].currentPrice;
-        mesh.position.y = data[i].currentPrice - 4200;
-      } else {
-        mesh.position.x = i * 200;
-        mesh.position.y = Math.random() * -200;
+      mesh.position.x = Math.random() * window.innerWidth * 2 - window.innerWidth;
+      mesh.position.y = Math.random() * window.innerWidth * 2 - window.innerWidth;
+      mesh.direction = {
+        x: Math.random(),
+        y: Math.random()
       }
-      // console.log(mesh)
       scene.add(mesh)
+
+      console.log(mesh)
 
       const animate = () => {
         requestAnimationFrame(animate);
+        // controls.update();
+
         mesh.rotation.x += Math.random()/100;
         mesh.rotation.y += Math.random()/100;
 
-        if(mesh.position.y > window.innerHeight) {
-          mesh.position.y -= Math.random()
-        } else if(mesh.position.y < 0) {
-          mesh.position.y += Math.random()
+        mesh.position.x += mesh.direction.x;
+        mesh.position.y += mesh.direction.y;
+        
+        if(mesh.position.x < -window.innerWidth || mesh.position.x > window.innerWidth) {
+          mesh.direction.x = -mesh.direction.x
         } 
-        mesh.position.y += Math.random()
+        if(mesh.position.y < -window.innerHeight || mesh.position.y > window.innerHeight){
+          mesh.direction.y = -mesh.direction.y
+        }
 
         renderer.render(scene, camera);
       }
