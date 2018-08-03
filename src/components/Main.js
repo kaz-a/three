@@ -1,6 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import Scene from './Scene';
+import Search from './Search';
+
+// comment out line 4 and 46 to remove search function
 
 class Main extends Component {
   constructor(){
@@ -8,7 +11,9 @@ class Main extends Component {
     this.state = {
       data: [],
       // historicalData: []
+      name: ''
     }
+    this.searchName = this.searchName.bind(this)
   }
 
   fetchLookupData(){
@@ -25,14 +30,22 @@ class Main extends Component {
   //   })
   // }
 
+  searchName(name){
+    this.setState({ name })
+  }
+
   componentDidMount(){
     this.fetchLookupData();
     // this.fetchHistoricalData();
   }
 
-  render (){
+  render(){
+    const { data, name } = this.state;
     return (
-      <Scene data={ this.state.data } />
+      <Fragment>
+        <Search data={ data } searchName={ this.searchName } name={ name } />
+        <Scene data={ data } name={ name } />
+      </Fragment>
     )
   }
 }

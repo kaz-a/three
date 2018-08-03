@@ -3,8 +3,8 @@ import * as THREE from 'three';
 
 class Scene extends Component {
   three(){
-    const {data} = this.props;
-    console.log('data:', data)
+    const {data, name} = this.props;
+    console.log('data:', data, 'name:', name)
        
     // Scene, camera, camera position
     const scene = new THREE.Scene();
@@ -30,7 +30,7 @@ class Scene extends Component {
     for(let i=0; i<data.length; i++){
       const largeSphere = data[i].currentPrice >= 1000;
       const geometry = new THREE.SphereGeometry(data[i].currentPrice, largeSphere ? 30 : 10, largeSphere ? 30 : 10);
-      const material = new THREE.MeshPhongMaterial({ color: 0xffff00, wireframe: true }) 
+      const material = new THREE.MeshPhongMaterial({ color: name && data[i].name.toLowerCase().indexOf(name) >= 0 ? 0xff0000 : 0xffff00, wireframe: true }) 
       const mesh = new THREE.Mesh(geometry, material);
 
       mesh.position.z = 0;     
