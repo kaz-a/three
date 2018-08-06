@@ -22,7 +22,7 @@ class Search extends Component {
           onChange={ (e) => this.setState({ name: e.target.value }) }
         />
         <Button variant="fab" mini color="primary"
-          onClick={ (e) => this.props.searchName(this.state.name)}
+          onClick={ (e) => this.props.searchName(this.state.name) }
         >></Button>
       </div>
     )

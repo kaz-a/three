@@ -2,17 +2,28 @@ import React, { Component } from 'react';
 import * as THREE from 'three';
 
 class Scene extends Component {
-  constructor(){
-    super();
-    this.state = {
-      
-    }
-  }
-  
   three(){
     const {data, name} = this.props;
-    const {scene, camera, light, renderer} = this.props.setup('space');
-    console.log(name, renderer)
+
+    // Scene, camera, camera position
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 0.2, 25000);
+    camera.position.set(100, -400, 2000);
+    scene.add(camera)
+
+    // Render
+    const renderer = new THREE.WebGLRenderer({ alpha: true });
+    renderer.setClearColor(0x000000, 0.0);
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.getElementById('space').appendChild(renderer.domElement);
+
+    // Lighting
+    const light = new THREE.PointLight(0xffffff, 1, 4000);
+    light.position.set(50, 0, 0);
+    const light_two = new THREE.PointLight(0xffffff, 1, 4000);
+    light_two.position.set(-100, 800, 800);
+    const lightAmbient = new THREE.AmbientLight(0x404040);
+    scene.add(light, light_two, lightAmbient);
    
     // Create spheres from data
     for(let i=0; i<data.length; i++){
@@ -52,8 +63,6 @@ class Scene extends Component {
   }
 
   render(){
-    const { data, name } = this.props;
-
     return (
       <div id='space'>
         { this.props.data.length ? this.three() : null }
@@ -63,10 +72,4 @@ class Scene extends Component {
 }
 
 export default Scene;
-
-
-
-
-
-
 
