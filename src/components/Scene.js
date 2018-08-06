@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as THREE from 'three';
 
 class Scene extends Component {
+  
   three(){
     const {data, name} = this.props;
 
@@ -15,8 +16,8 @@ class Scene extends Component {
     const renderer = new THREE.WebGLRenderer({ alpha: true });
     renderer.setClearColor(0x000000, 0.0);
     renderer.setSize(window.innerWidth, window.innerHeight);
-    document.getElementById('space').appendChild(renderer.domElement);
-
+    document.getElementById('space').appendChild(renderer.domElement)
+    
     // Lighting
     const light = new THREE.PointLight(0xffffff, 1, 4000);
     light.position.set(50, 0, 0);
@@ -72,4 +73,3 @@ class Scene extends Component {
 }
 
 export default Scene;
-
