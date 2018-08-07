@@ -12,7 +12,7 @@ class Search extends Component {
 
   render(){
     return (
-      <div className='search'>
+      <div className='search col-xs-12'>
         <h1>Stock Prices</h1>
         <TextField
           id="search"
