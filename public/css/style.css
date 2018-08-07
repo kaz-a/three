@@ -10,22 +10,8 @@ canvas {
 }
 
 /* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {
-  .search {
-    font-family: 'Montserrat', sans-serif;
-    position: absolute;
-    top: 10px;
-    width: 100%;
-    text-align: left;
-    z-index: 100;
-    display:block;
-    padding: 20px;
-    color: #fff;
-  }
-}
-
 /* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
+@media only screen and (max-width: 991px) {
   .search {
     font-family: 'Montserrat', sans-serif;
     position: absolute;
