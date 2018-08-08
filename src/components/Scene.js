@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import * as THREE from 'three';
 
 class Scene extends Component {
-  
+  constructor(){
+    super()
+    
+  }
   three(){
     const {data, name} = this.props;
 
@@ -30,7 +33,7 @@ class Scene extends Component {
     for(let i=0; i<data.length; i++){
       const largeSphere = data[i].currentPrice >= 100;
       const geometry = new THREE.SphereGeometry(data[i].currentPrice, largeSphere ? 20 : 10, largeSphere ? 20 : 10);
-      const material = new THREE.MeshPhongMaterial({ color: data[i].symbol.toLowerCase() === name.toLowerCase() ? 0xff0000 : 0xffff00, wireframe: true }) 
+      const material = new THREE.MeshPhongMaterial({ color: data[i].name == name ? 0xff0000 : 0xffff00, wireframe: true }) 
       const mesh = new THREE.Mesh(geometry, material);
 
       mesh.position.z = 0;     

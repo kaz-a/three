@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
+import NativeSelect from '@material-ui/core/NativeSelect';
 
 class Search extends Component {
   constructor(){
@@ -8,22 +7,32 @@ class Search extends Component {
     this.state = {
       name: ''
     }
+    this.handleChange = this.handleChange.bind(this)
+  }
+
+  handleChange(e){
+    this.props.searchName(e.target.value)
+    this.setState({ name: e.target.value })
   }
 
   render(){
+    const { data } = this.props;
     return (
       <div className='search col-xs-12'>
         <h1>Stock Prices</h1>
-        <TextField
-          id="search"
-          label="Search a company"
-          type="search"
-          margin="normal"
-          onChange={ (e) => this.setState({ name: e.target.value }) }
-        />
-        <Button variant="fab" mini color="primary"
-          onClick={ (e) => this.props.searchName(this.state.name) }
-        >></Button>
+        <NativeSelect
+          value={this.state.name}
+          onChange={this.handleChange}
+        >
+          <option value="">Select a company</option>
+          {
+            data.length && data.map(d => {
+              return (
+                <option key={ d.name } value={ d.name }>{ d.name }</option>
+              )
+            })
+          }
+        </NativeSelect>
       </div>
     )
   }

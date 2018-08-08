@@ -44,7 +44,7 @@ class Main extends Component {
     
     return (
       <Fragment>
-        <Search searchName={ this.searchName } />
+        <Search data={ data } searchName={ this.searchName } />
         <Scene data={ data } name={ name } /> 
       </Fragment>
     )
