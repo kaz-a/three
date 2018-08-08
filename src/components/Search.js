@@ -18,7 +18,7 @@ class Search extends Component {
   render(){
     const { data } = this.props;
     const _data = data.filter(d => d.name == this.state.name)
-    console.log('test', _data)
+    
     return (
       <Fragment>
         <div className='search col-xs-12'>
@@ -43,7 +43,7 @@ class Search extends Component {
             return (
               <div key={ d.name } className='text col-xm-12'>
                 <h3>{ d.name }</h3>
-                { d.symbol }<br />
+                { d.symbol } ({ d.exchange })<br />
                 Current price: { d.currentPrice }<br />
                 High Price: { d.highPrice }<br />
                 Low Price: { d.lowPrice }<br />

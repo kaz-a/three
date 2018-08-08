@@ -2,12 +2,10 @@ import React, { Component } from 'react';
 import * as THREE from 'three';
 
 class Scene extends Component {
-  constructor(){
-    super()
-    
-  }
   three(){
+    console.log('yay')
     const {data, name} = this.props;
+    console.log(data, name)
 
     // Scene, camera, camera position
     const scene = new THREE.Scene();
@@ -19,8 +17,13 @@ class Scene extends Component {
     const renderer = new THREE.WebGLRenderer({ alpha: true });
     renderer.setClearColor(0x000000, 0.0);
     renderer.setSize(window.innerWidth, window.innerHeight);
-    document.getElementById('space').appendChild(renderer.domElement)
-    
+    const node = document.getElementById('space');
+ 
+    if(name !== ''){
+      node.removeChild(node.getElementsByTagName('canvas')[0]);
+    }
+    node.appendChild(renderer.domElement)
+ 
     // Lighting
     const light = new THREE.PointLight(0xffffff, 1, 4000);
     light.position.set(50, 0, 0);
@@ -36,7 +39,7 @@ class Scene extends Component {
       const material = new THREE.MeshPhongMaterial({ color: data[i].name == name ? 0xff0000 : 0xffff00, wireframe: true }) 
       const mesh = new THREE.Mesh(geometry, material);
 
-      mesh.position.z = 0;     
+      mesh.position.z = 0;
       mesh.position.x = Math.random() * window.innerWidth * 2 - window.innerWidth;
       mesh.position.y = Math.random() * window.innerWidth * 2 - window.innerWidth;
       mesh.direction = { x: Math.random(), y: Math.random() }
