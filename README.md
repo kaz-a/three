@@ -13,5 +13,5 @@ Only current data is used in this app for now.
 
 ### Development
 1. `npm install`
-2. `npm run start`
+2. `npm run start:dev`
 3. go to `localhost:3333`
