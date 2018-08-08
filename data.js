@@ -16,17 +16,16 @@ app.get('/lookup', (req, res, next) => {
   .catch(next);
 })
 
-// app.get('/historical', (req, res, next) => {
-//   let histories = [];
-//   symbols.forEach(symbol => {
-//     histories.push(yahooStocks.history(symbol))
-//   })
-//   Promise.all(histories)
-//   .then(data => {
-//     console.log(data);
-//     res.json(data)
-//   })
-//   .catch(next);
-// })
+app.get('/historical', (req, res, next) => {
+  let histories = [];
+  symbols.forEach(symbol => {
+    histories.push(yahooStocks.history(symbol))
+  })
+  Promise.all(histories)
+  .then(data => {
+    res.json(data)
+  })
+  .catch(next);
+})
 
 module.exports = app;

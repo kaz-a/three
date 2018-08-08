@@ -6,7 +6,7 @@ Visualizing stock data with three.js + react
 ### [App Link](https://three-d-stock.herokuapp.com/)
 
 ### API
-Historical data is commented out in code. Only the `/lookup` api is available for now.
+Only current data is used in this app for now.
 
 | current data | historical data |
 | ------------ | --------------- |

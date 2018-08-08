@@ -10,7 +10,7 @@ class Main extends Component {
     super();
     this.state = {
       data: [],
-      // historicalData: []
+      historicalData: [],
       name: '', 
     }
     this.searchName = this.searchName.bind(this)
@@ -23,12 +23,12 @@ class Main extends Component {
     })
   }
 
-  // fetchHistoricalData(){
-  //   axios.get('/historical')
-  //   .then(data => {
-  //     this.setState({historicalData: data.data})
-  //   })
-  // }
+  fetchHistoricalData(){
+    axios.get('/historical')
+    .then(data => {
+      this.setState({historicalData: data.data})
+    })
+  }
 
   searchName(name){
     this.setState({ name })
@@ -36,7 +36,7 @@ class Main extends Component {
 
   componentDidMount(){
     this.fetchLookupData();
-    // this.fetchHistoricalData();
+    this.fetchHistoricalData();
   }
 
   render(){
