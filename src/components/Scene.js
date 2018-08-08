@@ -4,6 +4,7 @@ import * as THREE from 'three';
 class Scene extends Component {
   three(){
     const {data, name} = this.props;
+    console.log(name)
 
     // Scene, camera, camera position
     const scene = new THREE.Scene();
@@ -17,7 +18,7 @@ class Scene extends Component {
     renderer.setSize(window.innerWidth, window.innerHeight);
     const node = document.getElementById('space');
  
-    if(name !== ''){
+    if(name !== '' || name == 'Select a company'){
       node.removeChild(node.getElementsByTagName('canvas')[0]);
     }
     node.appendChild(renderer.domElement)
@@ -38,6 +39,10 @@ class Scene extends Component {
       const mesh = new THREE.Mesh(geometry, material);
 
       mesh.position.z = 0;
+      if(name !== '' && data[i].name == name){
+        mesh.position.x = window.innerWidth * 2 - window.innerWidth;
+        mesh.position.y = window.innerWidth * 2 - window.innerWidth;
+      }
       mesh.position.x = Math.random() * window.innerWidth * 2 - window.innerWidth;
       mesh.position.y = Math.random() * window.innerWidth * 2 - window.innerWidth;
       mesh.direction = { x: Math.random(), y: Math.random() }

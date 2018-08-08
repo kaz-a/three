@@ -27,7 +27,7 @@ class Search extends Component {
             value={this.state.name}
             onChange={this.handleChange}
           >
-            <option value="">Select a company</option>
+            <option value="Select a company">Select a company</option>
             {
               data.length && data.map(d => {
                 return (
