@@ -4,7 +4,6 @@ import * as THREE from 'three';
 class Scene extends Component {
   three(){
     const {data, name} = this.props;
-    console.log(name)
 
     // Scene, camera, camera position
     const scene = new THREE.Scene();

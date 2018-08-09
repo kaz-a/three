@@ -1,6 +1,5 @@
 # three
-Visualizing stock data with three.js + react
-* search function is available only on smaller screen sizes (tablet, phone)
+Experimental stock price data visualization with three.js + react 
 
 ### [App Link](https://three-d-stock.herokuapp.com/)
 
