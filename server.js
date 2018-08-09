@@ -16,7 +16,7 @@ app.get('/', (req, res, next) => {
 })
 
 app.listen(port, () => {
-  console.log(chalk.yellow(`server listening on port ${port}...`));
+  console.log(chalk.cyan(`server listening on port ${port}...`));
 })
 
 
